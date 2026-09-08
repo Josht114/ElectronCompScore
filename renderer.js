@@ -14,6 +14,13 @@
   const resetButton = document.getElementById('resetButton');
   const redScoreEl = document.getElementById('redScore');
   const blueScoreEl = document.getElementById('blueScore');
+  const pointButtons = document.querySelectorAll('.point-btn');
+
+  function setPointButtonsEnabled(enabled) {
+    pointButtons.forEach((btn) => {
+      btn.disabled = !enabled;
+    });
+  }
 
   function formatTime(totalSecs) {
     const clamped = Math.max(totalSecs, 0);
@@ -78,6 +85,7 @@
     if (timerRunning) return;
     timerRunning = true;
     intervalId = setInterval(tick, 1000);
+    setPointButtonsEnabled(true);
   }
 
   function stopTimer() {
@@ -86,6 +94,7 @@
       clearInterval(intervalId);
       intervalId = null;
     }
+    setPointButtonsEnabled(false);
   }
 
   function toggleTimer() {
@@ -133,4 +142,5 @@
 
   // Initial render
   updateTimeDisplay();
+  setPointButtonsEnabled(false);
 })();

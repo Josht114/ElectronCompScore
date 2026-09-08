@@ -191,6 +191,15 @@ body {
   background-color: #90caf9;
 }
 
+.point-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.point-btn:disabled:active {
+  background-color: inherit;
+}
+
 /* ---------- Timer state colors (mirrors the original WinForms behavior) ---------- */
 
 body.phase-green {

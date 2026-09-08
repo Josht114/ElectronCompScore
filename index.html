@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>CompScoreApp</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body id="body">
+
+  <div class="top-bar">
+    <div class="side-label red-label">Black</div>
+
+    <div class="center-controls">
+      <div id="timeLabel" class="time-label">05:00</div>
+      <button id="startStop" class="start-stop-btn">Start / Stop</button>
+    </div>
+
+    <div class="side-label blue-label">White</div>
+  </div>
+
+  <button id="resetButton" class="reset-btn">Reset</button>
+
+  <div class="scores-row">
+    <div id="redScore" class="score-display red-score">0</div>
+    <div id="blueScore" class="score-display blue-score">0</div>
+  </div>
+
+  <div class="negatives-row">
+    <button id="redNegative" class="negative-btn red-btn">Negative</button>
+    <button id="blueNegative" class="negative-btn blue-btn">Negative</button>
+  </div>
+
+  <div class="points-grid">
+    <button class="point-btn red-btn" data-side="red" data-points="1">Re-guard</button>
+    <div class="point-value">1</div>
+    <button class="point-btn blue-btn" data-side="blue" data-points="1">Re-guard</button>
+
+    <button class="point-btn red-btn" data-side="red" data-points="2">Pass / Double re-guard</button>
+    <div class="point-value">2</div>
+    <button class="point-btn blue-btn" data-side="blue" data-points="2">Pass / Double re-guard</button>
+
+    <button class="point-btn red-btn" data-side="red" data-points="3">Re-guard and pass</button>
+    <div class="point-value">3</div>
+    <button class="point-btn blue-btn" data-side="blue" data-points="3">Re-guard and pass</button>
+
+    <button class="point-btn red-btn" data-side="red" data-points="4">Double pass / double re-guard and pass</button>
+    <div class="point-value">4</div>
+    <button class="point-btn blue-btn" data-side="blue" data-points="4">Double pass / double re-guard and pass</button>
+
+    <button class="point-btn red-btn" data-side="red" data-points="5">Re-guard and double pass</button>
+    <div class="point-value">5</div>
+    <button class="point-btn blue-btn" data-side="blue" data-points="5">Re-guard and double pass</button>
+
+    <button class="point-btn red-btn" data-side="red" data-points="6">Double re-guard double pass</button>
+    <div class="point-value">6</div>
+    <button class="point-btn blue-btn" data-side="blue" data-points="6">Double re-guard double pass</button>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

@@ -18,22 +18,24 @@ body {
   background-color: #f0f0f0;
   transition: background-color 0.4s ease;
   padding: 1vh 1.5vw;
+  gap: 1vh;
 }
 
 /* ---------- Top bar: score-side labels + timer/start-stop ---------- */
 
 .top-bar {
+  flex: 0 0 14vh;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  position: relative;
 }
 
 .side-label {
-  font-size: 1.6vw;
+  font-size: 2.2vh;
   font-weight: bold;
-  padding: 0.4vh 1vw;
+  padding: 0.6vh 1vw;
   border-radius: 6px;
+  white-space: nowrap;
 }
 
 .red-label {
@@ -44,6 +46,7 @@ body {
 .blue-label {
   color: #ffffff;
   background-color: #444;
+  align-self: flex-end;
 }
 
 .center-controls {
@@ -51,19 +54,20 @@ body {
   flex-direction: column;
   align-items: center;
   flex: 1;
+  min-width: 0;
 }
 
 .time-label {
   font-family: "Calibri", Arial, sans-serif;
-  font-size: 8vw;
+  font-size: 9vh;
   font-weight: bold;
   line-height: 1;
 }
 
 .start-stop-btn {
-  font-size: 2.6vw;
+  font-size: 2.6vh;
   font-weight: bold;
-  padding: 1vh 3vw;
+  padding: 0.8vh 2vw;
   margin-top: 0.5vh;
   border-radius: 10px;
   border: 2px solid #333;
@@ -75,13 +79,17 @@ body {
   background-color: #dddddd;
 }
 
+.top-right-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6vh;
+}
+
 .reset-btn {
-  position: absolute;
-  top: 1vh;
-  right: 1.5vw;
-  font-size: 1.4vw;
+  font-size: 1.8vh;
   font-weight: bold;
-  padding: 1vh 1.2vw;
+  padding: 0.8vh 1.2vw;
   border-radius: 8px;
   border: 2px solid #333;
   background-color: #ffffff;
@@ -95,15 +103,15 @@ body {
 /* ---------- Score numbers ---------- */
 
 .scores-row {
+  flex: 0 0 14vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1vh;
 }
 
 .score-display {
   font-family: "Calibri", Arial, sans-serif;
-  font-size: 9vw;
+  font-size: 11vh;
   font-weight: bold;
   width: 40vw;
   text-align: center;
@@ -121,15 +129,15 @@ body {
 /* ---------- Negative buttons ---------- */
 
 .negatives-row {
+  flex: 0 0 6vh;
   display: flex;
   justify-content: space-between;
-  margin: 1vh 0;
 }
 
 .negative-btn {
-  font-size: 1.4vw;
+  font-size: 1.8vh;
   font-weight: bold;
-  padding: 1.2vh 3vw;
+  padding: 0 3vw;
   border-radius: 8px;
   border: 2px solid #333;
   cursor: pointer;
@@ -139,28 +147,30 @@ body {
 
 .points-grid {
   flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: 1fr 5vw 1fr;
   grid-template-rows: repeat(6, 1fr);
   gap: 1vh 1vw;
-  min-height: 0;
 }
 
 .point-btn {
-  font-size: 1.5vw;
+  font-size: clamp(11px, 1.9vh, 26px);
   font-weight: bold;
   border-radius: 8px;
   border: 2px solid #333;
   cursor: pointer;
   padding: 0 1vw;
   text-align: center;
+  line-height: 1.15;
+  overflow: hidden;
 }
 
 .point-value {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.8vw;
+  font-size: 3.5vh;
   font-weight: bold;
   color: #333;
 }

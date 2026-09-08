@@ -40,12 +40,12 @@ body {
 
 .red-label {
   color: #ffffff;
-  background-color: #222;
+  background-color: #c62828;
 }
 
 .blue-label {
   color: #ffffff;
-  background-color: #444;
+  background-color: #1565c0;
   align-self: flex-end;
 }
 
@@ -198,6 +198,11 @@ body {
 
 .point-btn:disabled:active {
   background-color: inherit;
+}
+
+.negative-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ---------- Timer state colors (mirrors the original WinForms behavior) ---------- */

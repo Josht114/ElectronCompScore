@@ -15,9 +15,13 @@
   const redScoreEl = document.getElementById('redScore');
   const blueScoreEl = document.getElementById('blueScore');
   const pointButtons = document.querySelectorAll('.point-btn');
+  const negativeButtons = document.querySelectorAll('.negative-btn');
 
   function setPointButtonsEnabled(enabled) {
     pointButtons.forEach((btn) => {
+      btn.disabled = !enabled;
+    });
+    negativeButtons.forEach((btn) => {
       btn.disabled = !enabled;
     });
   }

@@ -12,13 +12,24 @@
 
     <div class="center-controls">
       <div id="timeLabel" class="time-label">05:00</div>
-      <button id="startStop" class="start-stop-btn">Start / Stop</button>
+
+      <div class="time-config">
+        <label>Min
+          <input id="minutesInput" type="number" min="0" max="59" value="5" />
+        </label>
+        <label>Sec
+          <input id="secondsInput" type="number" min="0" max="59" value="0" />
+        </label>
+        <button id="setTimeBtn" class="set-time-btn">Set</button>
+      </div>
+
+      <div class="control-buttons-row">
+        <button id="startStop" class="start-stop-btn">Start / Stop</button>
+        <button id="resetButton" class="reset-btn">Reset</button>
+      </div>
     </div>
 
-    <div class="top-right-stack">
-      <div class="side-label blue-label">Blue</div>
-      <button id="resetButton" class="reset-btn">Reset</button>
-    </div>
+    <div class="side-label blue-label">Blue</div>
   </div>
 
   <div class="scores-row">

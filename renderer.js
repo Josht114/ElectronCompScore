@@ -1,7 +1,8 @@
 (() => {
-  const TOTAL_SECONDS = 300; // 5:00, same as original app
+  const DEFAULT_TOTAL_SECONDS = 300; // 5:00 default
 
-  let seconds = TOTAL_SECONDS;
+  let totalSeconds = DEFAULT_TOTAL_SECONDS;
+  let seconds = totalSeconds;
   let timerRunning = false;
   let intervalId = null;
 
@@ -16,6 +17,9 @@
   const blueScoreEl = document.getElementById('blueScore');
   const pointButtons = document.querySelectorAll('.point-btn');
   const negativeButtons = document.querySelectorAll('.negative-btn');
+  const minutesInput = document.getElementById('minutesInput');
+  const secondsInput = document.getElementById('secondsInput');
+  const setTimeBtn = document.getElementById('setTimeBtn');
 
   function setPointButtonsEnabled(enabled) {
     pointButtons.forEach((btn) => {
@@ -24,6 +28,12 @@
     negativeButtons.forEach((btn) => {
       btn.disabled = !enabled;
     });
+  }
+
+  function setTimeConfigEnabled(enabled) {
+    minutesInput.disabled = !enabled;
+    secondsInput.disabled = !enabled;
+    setTimeBtn.disabled = !enabled;
   }
 
   function formatTime(totalSecs) {
@@ -69,7 +79,7 @@
     seconds -= 1;
     updateTimeDisplay();
 
-    if (seconds < TOTAL_SECONDS / 2) {
+    if (seconds < totalSeconds / 2) {
       setPhase('phase-green');
     }
     if (seconds < 30) {
@@ -90,6 +100,7 @@
     timerRunning = true;
     intervalId = setInterval(tick, 1000);
     setPointButtonsEnabled(true);
+    setTimeConfigEnabled(false);
   }
 
   function stopTimer() {
@@ -99,6 +110,7 @@
       intervalId = null;
     }
     setPointButtonsEnabled(false);
+    setTimeConfigEnabled(true);
   }
 
   function toggleTimer() {
@@ -111,7 +123,7 @@
 
   function resetAll() {
     stopTimer();
-    seconds = TOTAL_SECONDS;
+    seconds = totalSeconds;
     updateTimeDisplay();
     setPhase(null);
 
@@ -119,6 +131,28 @@
     blueScoreTotal = 0;
     redScoreEl.textContent = redScoreTotal;
     blueScoreEl.textContent = blueScoreTotal;
+  }
+
+  function applyTimeConfig() {
+    if (timerRunning) return;
+
+    let mins = parseInt(minutesInput.value, 10);
+    let secs = parseInt(secondsInput.value, 10);
+
+    if (Number.isNaN(mins) || mins < 0) mins = 0;
+    if (Number.isNaN(secs) || secs < 0) secs = 0;
+    mins = Math.min(mins, 59);
+    secs = Math.min(secs, 59);
+
+    minutesInput.value = mins;
+    secondsInput.value = secs;
+
+    const newTotal = mins * 60 + secs;
+    totalSeconds = newTotal > 0 ? newTotal : DEFAULT_TOTAL_SECONDS;
+
+    seconds = totalSeconds;
+    setPhase(null);
+    updateTimeDisplay();
   }
 
   function addPoints(side, points) {
@@ -134,6 +168,7 @@
   // Wire up events
   startStopBtn.addEventListener('click', toggleTimer);
   resetButton.addEventListener('click', resetAll);
+  setTimeBtn.addEventListener('click', applyTimeConfig);
 
   document.getElementById('redNegative').addEventListener('click', () => addPoints('red', -1));
   document.getElementById('blueNegative').addEventListener('click', () => addPoints('blue', -1));

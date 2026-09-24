@@ -21,6 +21,28 @@ body {
   gap: 1vh;
 }
 
+/* ---------- Mode toggle ---------- */
+
+.mode-bar {
+  flex: 0 0 3vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mode-toggle-btn {
+  font-size: 1.4vh;
+  font-weight: bold;
+  padding: 0.4vh 1vw;
+  border-radius: 6px;
+  border: 2px solid #333;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.mode-toggle-btn:active {
+  background-color: #dddddd;
+}
+
 /* ---------- Top bar: score-side labels + timer/start-stop ---------- */
 
 .top-bar {
@@ -99,6 +121,20 @@ body {
 }
 
 .set-time-btn:active {
+  background-color: #dddddd;
+}
+
+.preset-btn {
+  font-size: 1.4vh;
+  font-weight: bold;
+  padding: 0.4vh 0.8vw;
+  border-radius: 6px;
+  border: 2px solid #333;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.preset-btn:active {
   background-color: #dddddd;
 }
 
@@ -264,4 +300,53 @@ body.phase-orange {
 
 body.phase-red {
   background-color: rgb(255, 0, 0);
+}
+
+/* ---------- Timer Only mode: hides scoring UI, enlarges the timer ---------- */
+
+body.timer-only .side-label,
+body.timer-only .scores-row,
+body.timer-only .negatives-row,
+body.timer-only .points-grid {
+  display: none;
+}
+
+body.timer-only .top-bar {
+  flex: 1;
+  justify-content: center;
+}
+
+body.timer-only .center-controls {
+  justify-content: center;
+  height: 100%;
+}
+
+body.timer-only .time-label {
+  font-size: 22vh;
+}
+
+body.timer-only .time-config {
+  font-size: 3vh;
+  gap: 1.2vw;
+}
+
+body.timer-only .time-config input {
+  width: 3.6em;
+  font-size: 3.4vh;
+}
+
+body.timer-only .set-time-btn,
+body.timer-only .preset-btn {
+  font-size: 2.4vh;
+  padding: 0.8vh 1.4vw;
+}
+
+body.timer-only .start-stop-btn {
+  font-size: 4vh;
+  padding: 1.4vh 3vw;
+}
+
+body.timer-only .reset-btn {
+  font-size: 2.6vh;
+  padding: 1vh 1.6vw;
 }

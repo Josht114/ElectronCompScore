@@ -20,6 +20,8 @@
   const minutesInput = document.getElementById('minutesInput');
   const secondsInput = document.getElementById('secondsInput');
   const setTimeBtn = document.getElementById('setTimeBtn');
+  const presetButtons = document.querySelectorAll('.preset-btn');
+  const modeToggleBtn = document.getElementById('modeToggleBtn');
 
   function setPointButtonsEnabled(enabled) {
     pointButtons.forEach((btn) => {
@@ -34,6 +36,21 @@
     minutesInput.disabled = !enabled;
     secondsInput.disabled = !enabled;
     setTimeBtn.disabled = !enabled;
+    presetButtons.forEach((btn) => {
+      btn.disabled = !enabled;
+    });
+  }
+
+  function applyPreset(minutes) {
+    if (timerRunning) return;
+    minutesInput.value = minutes;
+    secondsInput.value = 0;
+    applyTimeConfig();
+  }
+
+  function toggleTimerOnlyMode() {
+    const isTimerOnly = body.classList.toggle('timer-only');
+    modeToggleBtn.textContent = isTimerOnly ? 'Show Scoring' : 'Timer Only Mode';
   }
 
   function formatTime(totalSecs) {
@@ -169,6 +186,12 @@
   startStopBtn.addEventListener('click', toggleTimer);
   resetButton.addEventListener('click', resetAll);
   setTimeBtn.addEventListener('click', applyTimeConfig);
+  modeToggleBtn.addEventListener('click', toggleTimerOnlyMode);
+
+  presetButtons.forEach((btn) => {
+    const minutes = parseInt(btn.dataset.minutes, 10);
+    btn.addEventListener('click', () => applyPreset(minutes));
+  });
 
   document.getElementById('redNegative').addEventListener('click', () => addPoints('red', -1));
   document.getElementById('blueNegative').addEventListener('click', () => addPoints('blue', -1));
